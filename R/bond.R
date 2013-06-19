@@ -95,11 +95,11 @@ setMethod("getCFdisc", "numeric",
           }
 )
 
-setMethod("getCFdisc", "NS",
+setMethod("getCFdisc", "NelsonSiegel",
           function(r,bond)
           {
             t = getCFTime(bond)
-            r = NelsonSiegel(r,t)
+            r = getNelsonSiegelIntrestRates(r,t)
             CFd = getCFdisc(r,bond)
             return(CFd)
           }

@@ -1,4 +1,4 @@
-setClass(Class="NS",representation=list(
+setClass(Class="NelsonSiegel",representation=list(
   alpha1 = "numeric",
   alpha2 = "numeric",
   alpha3 = "numeric",
@@ -16,7 +16,7 @@ setClass(Class="NS",representation=list(
 ###################################################
 # Tworzenie obiektu z parametrami Nelsona-Siegela #
 ###################################################
-setMethod("initialize","NS",
+setMethod("initialize","NelsonSiegel",
           function(.Object,alpha1,alpha2,alpha3,beta)
           {
             .Object@alpha1 = alpha1
@@ -27,9 +27,9 @@ setMethod("initialize","NS",
           }
 )
 
-newNS <-function(alpha1,alpha2,alpha3,beta)
+newNelsonSiegel <-function(alpha1,alpha2,alpha3,beta)
 {
-  new("NS",alpha1,alpha2,alpha3,beta)
+  new("NelsonSiegel",alpha1,alpha2,alpha3,beta)
 }
 
 
@@ -37,11 +37,11 @@ newNS <-function(alpha1,alpha2,alpha3,beta)
 ############################################
 # Obliczanie stop z modelu Nelsona-Siegela #
 ############################################
-setGeneric("NelsonSiegel", function(ns,t,...) {
-  standardGeneric("NelsonSiegel")
+setGeneric("getNelsonSiegelIntrestRates", function(ns,t,...) {
+  standardGeneric("getNelsonSiegelIntrestRates")
 })
 
-setMethod("NelsonSiegel", "NS",
+setMethod("getNelsonSiegelIntrestRates", "NelsonSiegel",
           function(ns,  t, ...)
           {
             alpha1 = ns@alpha1

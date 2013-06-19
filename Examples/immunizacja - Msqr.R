@@ -1,3 +1,23 @@
+#Przy pierwszym uruchomieniu nalezy wykonac kroki
+# ktore sa zakomentowane - instalacja wymaganych pakietow itp
+
+#instalacja pakietu pozwalajaca zainstalowac paczke z GitHuba
+#install.packages("devtools)
+
+#instalacja pakietu bezposrednio z githuba
+
+#devtools::install_github("BondProc", "zzawadz")
+
+
+#https://github.com/zzawadz/BondProc - adres repozytorium
+#mozna tam podejrzec kod
+
+#Wymagany pakiet do optymalizacji 
+#nie instaluje sie sam!!!!
+#install.packages("lpSolve")
+
+
+require(BondProc)
 # Przyklad immunizacji portfela obligacji przy pomocy M^2
 
 # Trzy przykładowe obligacje:

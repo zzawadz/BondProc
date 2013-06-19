@@ -1,9 +1,9 @@
 Package: BondProc
 Type: Package
-Title: What the package does (short line)
-Version: 1.0
+Title: Some functions for bonds
+Version: 0.1
 Date: 2013-06-15
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Zygmunt Zawadzki
+Maintainer: Zygmunt Zawadzki <zawadzkizygmunt@gmail.com>
+Description: Later...
+License: GPL (>= 2)
