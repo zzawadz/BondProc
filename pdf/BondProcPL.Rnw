@@ -13,9 +13,13 @@
 
 \maketitle
 
+\section{Co to?}
+
+BondProc to pakiet mojego autorstwa, w którym jest kilka funkcji związanych z obligacjami.
+
 \section{Dlaczego? I po co?}
 
-Dlaczego? Bo mogę. Po co? Nie wiem. Generalnie są tutaj różnej funckje które może komuś się przydadzą w najbliższej pracy zaliczeniowej. Jednak szczerze wątpię, by na obecnym stadium pakiet był jakoś bardzo użyteczy - gdyż nie ma dokumentacji prawie wcale - a bez tego ani rusz (a nie mam teraz czasu by móc nad tym przysiedzieć). Nie ma też wielu funkcji które powinny być, by móc wygodnie korzystać z tegoż pakietu, a te które są (a mimo wszystko jest ich kilka) - są oczywiście praktycznie bezużyteczne bez dokumentacji... Jednak może ktoś w tej krótkiej notce zobaczy coś fajnego, co go zmobilizuje do roboty... No!
+Dlaczego? Bo mogę. Po co? Nie wiem. Generalnie są tutaj różnej funkcje które może komuś się przydadzą w najbliższej pracy zaliczeniowej. Jednak szczerze wątpię, by na obecnym stadium pakiet był jakoś bardzo użyteczny - gdyż nie ma dokumentacji prawie wcale - a bez tego ani rusz (a nie mam teraz czasu by móc nad tym przysiedzieć). Nie ma też wielu funkcji które powinny być, by móc wygodnie korzystać z tegoż pakietu, a te które są (a mimo wszystko jest ich kilka) oczywiście praktycznie bezużyteczne bez dokumentacji... Jednak może ktoś w tej krótkiej notce zobaczy coś fajnego, co go zmobilizuje do roboty... No!
 
 \section{Instalacja}
 
