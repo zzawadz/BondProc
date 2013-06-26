@@ -16,7 +16,7 @@ getBondPrice(bond,r=0.1)
 bond = newBond(face = 100, maturity= 10, coupon= 1:10/100, n.pay= 1)
 
 # Tworzenie obiektu z parametrami Nelsona-Siegela
-ns = newNS(alpha1=0.01,alpha2= 0.02, alpha3= 0,beta = 1)
+ns = newNelsonSiegel(alpha1=0.01,alpha2= 0.02, alpha3= 0,beta = 1)
 
 #Obliczenie ceny
 getBondPrice(bond,ns)

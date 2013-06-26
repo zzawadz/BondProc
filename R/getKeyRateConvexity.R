@@ -1,10 +1,10 @@
-getKeyRateDuration<-function(r,bond,id = NULL)
+getKeyRateConvexity<-function(r,bond,id = NULL)
 {
   CFd = getCFdisc(r,bond)
   t = getCFTime(bond)
   price = getBondPrice(bond,r)
   
-  krd = CFd*t/price
+  krd = CFd*t*t/price
   
   if(!is.null(id))
   {
@@ -20,7 +20,3 @@ getKeyRateDuration<-function(r,bond,id = NULL)
   
   result
 }
-
-# rf = function(t) (4.5+2*t)/100
-# bond = newBond(100,maturity=2,coupon=0.1,n.pay=4)
-# getKeyRateDuration(rf,bond)

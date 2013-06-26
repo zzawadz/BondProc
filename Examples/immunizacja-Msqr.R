@@ -35,3 +35,14 @@ rf = function(t) (0.5*t+2.5)/100
 
 portfolio = immunizationMsqr(basket=basket, r=rf, H = 7)
 print(portfolio)
+
+immCF = newBond(face=10000,maturity=7,coupon=0.00,n.pay=1)
+
+#Ilosc obligacji:
+getBondPrice(immCF,rf)*portfolio$weights/getBondPrice(basket,rf)
+
+#Maks zmiana procentowa:
+deltaF = 0.04
+portfolio$portfolio.Msqr/2*deltaF
+  
+  
