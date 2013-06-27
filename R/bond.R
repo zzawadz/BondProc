@@ -1,6 +1,6 @@
 setClass(Class="bond",representation=list(
   face = "numeric",
-  maturity = "numeric",
+  maturity = "date",
   coupon = "numeric",
   n.pay   = "numeric",
   price = "numeric"),
