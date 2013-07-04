@@ -1,81 +1,62 @@
+setOldClass("xts")
 setClass(Class="bond",representation=list(
   face = "numeric",
-  maturity = "date",
-  coupon = "numeric",
-  n.pay   = "numeric",
-  price = "numeric"),
-         prototype = list(
-           face = 100,
-           maturity = 1,
-           coupon = 0.1,
-           n.pay   = 1,
-           price = 0)
-         
+  issue.date = "Date",
+  price = "numeric",
+  cash.flows = "xts",
+  isin = "character"
+ ),
+          prototype = list(
+            face = 100,
+            issue.date = as.Date("2011-01-01"),
+            price = 0,
+            cash.flows = xts(),
+            isin = "0")
+          
 )
 
+
+
 setMethod("initialize","bond",
-          function(.Object,face,maturity,coupon,n.pay, price, r)
+          function(.Object, cash.flows, face, issue.date, isin)
           {
             .Object@face = face
-            .Object@maturity = maturity
-            .Object@coupon = coupon
-            .Object@n.pay = n.pay
+            .Object@issue.date = issue.date 
+            .Object@cash.flows = cash.flows
             .Object@price = numeric()
-            
-            if(!is.null(price))
-            {
-              .Object@price = price
-            }
-            # jesli jest podana stopa procentowa, lub parametry N-S 
-            # - wtedy obligacja jest od razu wyceniana
-            if(!is.null(r))
-            {
-              .Object@price = bondPrice(r,.Object)
-            }
-            
+            .Object@isin = as.character(isin)
             .Object
           }
 )
 
-newBond <-function(face,maturity,coupon,n.pay, price = NULL, r = NULL)
-{
-  new("bond",face,maturity,coupon,n.pay,price,r)
-}
 
 
-#Funkcja zwraca CASHFlow generowane przez obligacje
-
-setGeneric("getCF", function(bond) {
-  standardGeneric("getCF")
+setGeneric("getIssueDate", function(bond) {
+  standardGeneric("getIssueDate")
 })
-setMethod("getCF", "bond",
-    function(bond)
-    {
-      if(length(bond@coupon)==1)
-      {
-        CF = rep(bond@coupon*bond@face/bond@n.pay,bond@maturity*bond@n.pay)
-      } else 
-      {
-        CF = bond@coupon*bond@face
-      }
-      
-      CF[length(CF)] = CF[length(CF)] + bond@face
-      return(CF)
-    }
-)
 
-setGeneric("getCFTime", function(bond) {
-  standardGeneric("getCFTime")
-})
-setMethod("getCFTime", "bond",
+setMethod("getIssueDate", "bond",
           function(bond)
           {
-            maturity = bond@maturity
-            n.pay = bond@n.pay
-            t = seq(1/n.pay,maturity,1/n.pay)
-            return(t)
+            return(bond@issue.date)
           }
 )
+
+setGeneric("getISIN", function(bond) {
+  standardGeneric("getISIN")
+})
+
+setMethod("getISIN", "bond",
+          function(bond)
+          {
+            return(bond@isin)
+          }
+)
+
+
+
+
+
 
 
 #Zwraca zdyskontowane przeplywy pieniezne

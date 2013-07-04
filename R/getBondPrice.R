@@ -1,35 +1,42 @@
-
-setGeneric("getBondPrice", function(bond,r=NULL,...) {
+setGeneric("getBondPrice", function(bond,r=NULL, today = NULL,theoretical = FALSE) {
   standardGeneric("getBondPrice")
 })
 
 setMethod("getBondPrice", "bond",
-          function(bond,r)
+          function(bond, r, today, theoretical)
           {
 
-            if(length(bond@price)==0)
+            if(length(bond@price)==0 | theoretical)
             {
-              if(is.null(r)) stop("Nie moge obliczyc ceny - nie podano struktury terminowej")
-              return(bondPrice(r,bond))
+              if(!theoretical) warning("There is no price for bond ISIN: ",getISIN(bond),". Theoretical price will be used.")
+              
+              if(is.null(r)) stop("There is no term structure. Price can not be calculated.")
+              price = sum(getDiscountedCF(bond, r, today))
+              return(price)
             }
             else return(bond@price)
           }
 )
 
-setMethod("getBondPrice", "bondBasket",
-          function(bond,r)
-          {
-            basket = bond
-            basket.size = length(basket)
-            prices = 1:basket.size
-            
-            for(i in 1:basket.size)
-            {
-              prices[i]   = getBondPrice(basket[[i]],r)
-            }
-            return(prices)
-          }
-)
+#bond = createBondSyn(face=20000,maturity=10,n.pay=1,coupon=0.05)
+#getBondPrice(bond,0.1, theoretical=TRUE)
+#getBondPrice(bond,0.1, as.Date("1973-12-31"))
+
+
+# setMethod("getBondPrice", "bondBasket",
+#           function(bond,r)
+#           {
+#             basket = bond
+#             basket.size = length(basket)
+#             prices = 1:basket.size
+#             
+#             for(i in 1:basket.size)
+#             {
+#               prices[i]   = getBondPrice(basket[[i]],r)
+#             }
+#             return(prices)
+#           }
+# )
 
 
 # bond = newBond(face=100,maturity=10,coupon=0.1,n.pay=6)

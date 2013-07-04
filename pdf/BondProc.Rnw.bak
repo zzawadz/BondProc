@@ -1,0 +1,23 @@
+\documentclass{article}
+
+
+\begin{document}
+
+\tableofcontents
+
+\section{Dupa}
+
+Ala ma kota $F(x) = \in \sum_x^{\frac{1}{5}$
+
+%<<echo=FALSE>>=
+%require(methods)
+%@
+
+%<<>>=
+
+%require(BondProc)
+
+%@
+\section{dupa2}
+
+\end{document}
