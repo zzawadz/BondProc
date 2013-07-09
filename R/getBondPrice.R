@@ -18,26 +18,20 @@ setMethod("getBondPrice", "bond",
           }
 )
 
-#bond = createBondSyn(face=20000,maturity=10,n.pay=1,coupon=0.05)
-#getBondPrice(bond,0.1, theoretical=TRUE)
-#getBondPrice(bond,0.1, as.Date("1973-12-31"))
+# bond = createBondSyn(face=10000,maturity=10,n.pay=4,coupon=0.05)
+# getBondPrice(bond,0.1, theoretical=TRUE)
+# getBondPrice(bond,0.1, as.Date("1973-12-31"))
 
 
-# setMethod("getBondPrice", "bondBasket",
-#           function(bond,r)
-#           {
-#             basket = bond
-#             basket.size = length(basket)
-#             prices = 1:basket.size
-#             
-#             for(i in 1:basket.size)
-#             {
-#               prices[i]   = getBondPrice(basket[[i]],r)
-#             }
-#             return(prices)
-#           }
-# )
+setMethod("getBondPrice", "bondBasket",
+          function(bond, r, today, theoretical)
+          {
+              sapply(bond,getBondPrice,r=r,today=today,theoretical=theoretical,simplify=TRUE)
+          }
+)
 
+#basket = createBondSyn() + createBondSyn(face = 1000)
+#getBondPrice(basket,0.1, theoretical=T)
 
 # bond = newBond(face=100,maturity=10,coupon=0.1,n.pay=6)
 # 

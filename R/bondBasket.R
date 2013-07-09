@@ -1,3 +1,5 @@
+# NEW VERSION
+
 setClass(Class="bondBasket",
     contains = "list"
 )
@@ -39,3 +41,11 @@ setMethod("+",signature(e1="bondBasket", e2 = "bondBasket"),
           }
 )
 
+
+##
+#bond = createBondSyn()
+#bond2 = createBondSyn(face=1000)
+
+#basket = bond+bond2
+#getBondPrice(bond,r=0.1)
+#lapply(basket,getBondPrice,r=0.1)

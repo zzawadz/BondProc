@@ -1,3 +1,5 @@
+#NEW VERSION
+
 setGeneric("getCF", function(bond, today = NULL) {
   standardGeneric("getCF")
 })
@@ -23,16 +25,24 @@ setMethod("getDiscountedCF", "bond",
           function(bond,r, today)
           {
             cf = getCF(bond, today)
-            cf.time = index(cf)
-            
-            if(is.null(today)) today = getIssueDate(bond)
-            days = as.numeric(cf.time - today)/365
-            return(cf*exp(-days*r))           
+            cf.time = getCFTime(bond, today)
+            return(cf*exp(-cf.time*r))           
           }         
 )
 
-
-
+setGeneric("getCFTime", function(bond,today = NULL) {
+  standardGeneric("getCFTime")
+})
+setMethod("getCFTime", "bond",
+          function(bond, today)
+          {
+            cf = getCF(bond, today)
+            cf.time = index(cf)   
+            if(is.null(today)) today = getIssueDate(bond)
+            cf.time = (unclass(cf.time) - unclass(today))/(365*86400)
+            return(cf.time)           
+          }         
+)
 
 
 # Tests:

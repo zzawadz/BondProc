@@ -1,4 +1,5 @@
 require(xts)
+require(chron)
 
 ?xts
 
@@ -17,3 +18,8 @@ x = as.Date("2000-03-03")
 x2 = x+365
 
 newBond(face=100,maturity=x2,issue.date=x,coupon=0.1,n.pay=1)
+
+#############
+
+
+x = xts(x=1:100,as.Date(1:100))
